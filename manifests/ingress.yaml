@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tan-dara5304-dara-nextjs-https-ingress
+  namespace: tan-dara5304-dara-nextjs
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - tan-dara5304-dara-nextjs.assessify.org
+      secretName: tan-dara5304-dara-nextjs-secret-tls
+  rules:
+    - host: tan-dara5304-dara-nextjs.assessify.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: tan-dara5304-dara-nextjs-service
+                port:
+                  number: 8233
