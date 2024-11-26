@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tan-dara5304-dara-nextjs-certificate
+  namespace: tan-dara5304-dara-nextjs
+spec:
+  secretName: tan-dara5304-dara-nextjs-secret-tls
+  commonName: tan-dara5304-dara-nextjs.assessify.org
+  dnsNames:
+  - tan-dara5304-dara-nextjs.assessify.org
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
